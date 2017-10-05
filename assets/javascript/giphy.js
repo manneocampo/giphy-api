@@ -78,19 +78,19 @@ function displayTopicInfo() {
 		// 	gifDiv.append(personImageStill);
 		// }
 
-		//attempt 1
-		// var state = $(this).attr("src"); 
+		//attempt 1 edited
+		var state = $(this).attr("src"); 
 
-		// if (state === "fixed_height_still") {
-		// 	$(this).attr("src", $(this).attr("fixed_height")); 
-		// }else {
-		// 	$(this).attr("src", $(this).attr("fixed_height_still"));
-		// }
+		if (state === "results[i].images.fixed_height_still.url") {
+			$(this).attr("src", $(this).attr("results[i].images.fixed_height.url")); 
+		}else {
+			$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url"));
+		}
 	})
 
 
 	//event listener for all elements with a class of "topic"
-	$(document).on("click", ".topic", displayTopicInfo); 
+	$(document).on("click", ".topic",  displayTopicInfo); 
 	renderButtons(); 
 
 	
