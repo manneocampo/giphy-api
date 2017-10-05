@@ -42,7 +42,7 @@ function displayTopicInfo() {
 
 
 	function renderButtons () {
-		// $("#buttons-view").empty();
+		$("#buttons-view").empty();
 
 		for (var i = 0; i < topics.length; i++) {
 			var arrayTopics = $("<button>");
@@ -53,7 +53,7 @@ function displayTopicInfo() {
 
 			arrayTopics.text(topics[i]);
 
-			$("buttons-view").append(arrayTopics);
+			$("#buttons-view").append(arrayTopics);
 		}
 	}
 
