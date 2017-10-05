@@ -73,19 +73,29 @@ function displayTopicInfo() {
 	});
 
 	$(".gif").on("click", function(){
+		
+		//attempt 3 
+		// var state = $(this).class("animate"); 
+
+		// if (state === "animate") {
+		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url")); 
+		// }else {
+		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height.url"));
+		// }
+
 		//attempt 2
 		// if (personImage === true) {
 		// 	gifDiv.append(personImageStill);
 		// }
 
 		//attempt 1 edited
-		var state = $(this).attr("src"); 
+		// var state = $(this).attr("src"); 
 
-		if (state === "results[i].images.fixed_height_still.url") {
-			$(this).attr("src", $(this).attr("results[i].images.fixed_height.url")); 
-		}else {
-			$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url"));
-		}
+		// if (state === "results[i].images.fixed_height.url") {
+		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url")); 
+		// }else {
+		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height.url"));
+		// }
 	})
 
 
