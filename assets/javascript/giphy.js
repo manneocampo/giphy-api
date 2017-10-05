@@ -27,11 +27,11 @@ function displayTopicInfo() {
 
 		    			var p =$("<p>").text("Rating:" + rating); 
 
-		    			var personImage = $("<img class='animate'>"); 
+		    			var personImage = $("<img class='animate' data-state='animate'>"); 
 
 		    			personImage.attr("src", results[i].images.fixed_height.url);
 
-		    			var personImageStill = $("<img class='still'>"); 
+		    			var personImageStill = $("<img class='still' data-state='animate'>"); 
 
 		    			personImageStill.attr("src", results[i].images.fixed_height_still.url);
 
@@ -73,6 +73,17 @@ function displayTopicInfo() {
 	});
 
 	$(".gif").on("click", function(){
+
+		var state = $(this).attr("data-state");
+
+		if (state ==="animate") {
+			$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url"));
+			$(this).attr("data-state", "still");
+		}else {
+			
+			$(this).attr("src", $(this).attr("results[i].images.fixed_height.url")); 
+			$(this).attr("data-state", "animate");
+		}
 		
 		//attempt 3 
 		// var state = $(this).class("animate"); 
