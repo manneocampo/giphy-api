@@ -2,49 +2,47 @@ var topics = ["hermione granger", "ron weasley", "harry potter", "dumbledore", "
 
 function displayTopicInfo() {
 		
+			var person = $(this).attr("data-topic");
 
-		var person = $(this).attr("data-topic");
+			//constructing URL to search Giphy for name of data-topic
+			var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+		        person + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-		//constructing URL to search Giphy for name of data-topic
-		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-	        person + "&api_key=dc6zaTOxFJmzC&limit=10";
+		    $.ajax({
+		    	url:queryURL, 
+		    	method: "GET"
+		    })
+		    .done(function(response) {
+		    	console.log(response.data);
 
-	    $.ajax({
-	    	url:queryURL, 
-	    	method: "GET"
-	    })
-	    .done(function(response) {
-	    	console.log(response);
+		    	var results = response.data;
 
-	    	var results = response.data;
+		    	for (var i=0; i < results.length; i++) {
+		    		
+		    		if(results[i].rating !== "r" && results[i].rating !== "pg-13"){
 
-	    	for (var i=0; i < results.length; i++) {
-	    		
-	    		if(results[i].rating !== "r" && results[i].rating !== "pg-13"){
+		    			var gifDiv = $("<div class='topic'>");
 
-	    			var gifDiv = $("<div class='item'>");
+		    			var rating = results[i].rating;
 
-	    			var rating = results[i].rating;
+		    			var p =$("<p>").text("Rating:" + rating); 
 
-	    			var p =$("<p>").text("Rating:" + rating); 
+		    			var personImage = $("<img>"); 
 
-	    			var personImage = $("<img>"); 
+		    			personImage.attr("src", results[i].images.fixed_height.url);
 
-	    			personImage.attr("src", results[i].images.fixed_height.url);
+		    			gifDiv.append(p);
+		    			gifDiv.append(personImage);
 
-	    			gifDiv.append(p);
-	    			gifDiv.append(personImage);
+		    			$("#gifs-appear-here").prepend(gifDiv);	
+		    		}
+		    	}
+		    })
+};
 
-	    			$("#gifs-appear-here").prepend(gifDiv);
-	    			
-	    		}
-	    	} 
-
-	    });
-	};
 
 	function renderButtons () {
-		$("#buttons-view").empty();
+		// $("#buttons-view").empty();
 
 		for (var i = 0; i < topics.length; i++) {
 			var arrayTopics = $("<button>");
@@ -70,7 +68,7 @@ function displayTopicInfo() {
 	});
 
 
-	//event listener for all button elements
+	//event listener for all elements with a class of "topic"
 	$(document).on("click", ".topic", displayTopicInfo); 
 	renderButtons(); 
 
