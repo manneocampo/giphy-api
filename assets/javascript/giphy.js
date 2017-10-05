@@ -27,12 +27,17 @@ function displayTopicInfo() {
 
 		    			var p =$("<p>").text("Rating:" + rating); 
 
-		    			var personImage = $("<img>"); 
+		    			var personImage = $("<img class='animate'>"); 
 
 		    			personImage.attr("src", results[i].images.fixed_height.url);
 
+		    			var personImageStill = $("<img class='still'>"); 
+
+		    			personImageStill.attr("src", results[i].images.fixed_height_still.url);
+
 		    			gifDiv.append(p);
 		    			gifDiv.append(personImage);
+		    			
 
 		    			$("#gifs-appear-here").prepend(gifDiv);	
 		    		}
@@ -67,9 +72,21 @@ function displayTopicInfo() {
 		renderButtons();
 	});
 
-	// $(".gif").on("click", function(){
-		
-	// })
+	$(".gif").on("click", function(){
+		//attempt 2
+		// if (personImage === true) {
+		// 	gifDiv.append(personImageStill);
+		// }
+
+		//attempt 1
+		// var state = $(this).attr("src"); 
+
+		// if (state === "fixed_height_still") {
+		// 	$(this).attr("src", $(this).attr("fixed_height")); 
+		// }else {
+		// 	$(this).attr("src", $(this).attr("fixed_height_still"));
+		// }
+	})
 
 
 	//event listener for all elements with a class of "topic"
