@@ -1,4 +1,4 @@
-var topics = ["hermione granger", "ron weasley", "harry potter", "dumbledore", "voldemort", "ginny"];
+var topics = ["Hermione Granger", "Ron Weasley", "Harry potter", "Dumbledore", "Voldemort", "Ginny Weasley"];
 
 function displayTopicInfo() {
 		
@@ -21,7 +21,7 @@ function displayTopicInfo() {
 		    		
 		    		if(results[i].rating !== "r" && results[i].rating !== "pg-13"){
 
-		    			var gifDiv = $("<div class='topic'>");
+		    			var gifDiv = $("<div class='gif'>");
 
 		    			var rating = results[i].rating;
 
@@ -66,6 +66,10 @@ function displayTopicInfo() {
 
 		renderButtons();
 	});
+
+	// $(".gif").on("click", function(){
+		
+	// })
 
 
 	//event listener for all elements with a class of "topic"
