@@ -1,4 +1,6 @@
 var topics = ["Hermione Granger", "Ron Weasley", "Harry potter", "Dumbledore", "Voldemort", "Ginny Weasley"];
+var personImage= {};
+var personImageStill={};
 
 function displayTopicInfo() {
 		
@@ -27,19 +29,35 @@ function displayTopicInfo() {
 
 		    			var p =$("<p>").text("Rating:" + rating); 
 
-		    			var personImage = $("<img class='animate' data-state='animate'>"); 
+		    			var personImage = $("<img class='animate gif' data-state='animate'>"); 
 
 		    			personImage.attr("src", results[i].images.fixed_height.url);
 
-		    			var personImageStill = $("<img class='still' data-state='animate'>"); 
+		    			var personImageStill = $("<img class='still gif' data-state='animate'>"); 
 
 		    			personImageStill.attr("src", results[i].images.fixed_height_still.url);
 
 		    			gifDiv.append(p);
 		    			gifDiv.append(personImage);
+		    			// gifDiv.append(personImageStill);
 		    			
+		    			$("#gifs-appear-here").prepend(gifDiv);
 
-		    			$("#gifs-appear-here").prepend(gifDiv);	
+		    // 			$(document).on("click", ".gif", function(){
+						// 	console.log("click gif");
+						// 	var state = $(this).attr("data-state");
+
+						// 	if (state ==="animate") {
+						// 		$(this).attr("src", personImageStill);
+						// 		$(this).attr("data-state", "still");
+
+						// 	}else {
+								
+						// 		$(this).attr("src", personImage); 
+						// 		$(this).attr("data-state", "animate");
+						// 	}
+						
+						// })	
 		    		}
 		    	}
 		    })
@@ -60,7 +78,7 @@ function displayTopicInfo() {
 
 			$("#buttons-view").append(arrayTopics);
 		}
-	}
+	};
 
 	$("#add-gif").on("click", function(event){
 		event.preventDefault();
@@ -72,19 +90,20 @@ function displayTopicInfo() {
 		renderButtons();
 	});
 
-	$(".gif").on("click", function(){
-
+	$(document).on("click", ".gif", function(){
+		console.log("click gif");
 		var state = $(this).attr("data-state");
 
 		if (state ==="animate") {
-			$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url"));
+			$(this).attr("src", personImageStill);
 			$(this).attr("data-state", "still");
 		}else {
 			
-			$(this).attr("src", $(this).attr("results[i].images.fixed_height.url")); 
+			$(this).attr("src", personImage); 
 			$(this).attr("data-state", "animate");
 		}
-		
+	
+	});	
 		//attempt 3 
 		// var state = $(this).class("animate"); 
 
@@ -107,7 +126,7 @@ function displayTopicInfo() {
 		// }else {
 		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height.url"));
 		// }
-	})
+	
 
 
 	//event listener for all elements with a class of "topic"
