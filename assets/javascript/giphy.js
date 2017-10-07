@@ -1,6 +1,4 @@
 var topics = ["Hermione Granger", "Ron Weasley", "Harry potter", "Dumbledore", "Voldemort", "Ginny Weasley"];
-var personImage= {};
-var personImageStill={};
 
 function displayTopicInfo() {
 		
@@ -23,41 +21,26 @@ function displayTopicInfo() {
 		    		
 		    		if(results[i].rating !== "r" && results[i].rating !== "pg-13"){
 
-		    			var gifDiv = $("<div class='gif'>");
+		    			var gifDiv = $("<div>");
 
 		    			var rating = results[i].rating;
 
 		    			var p =$("<p>").text("Rating:" + rating); 
 
-		    			var personImage = $("<img class='animate gif' data-state='animate'>"); 
+		    			personImage = $("<img class='animate gif' data-state='animate'>"); 
 
-		    			personImage.attr("src", results[i].images.fixed_height.url);
-
-		    			var personImageStill = $("<img class='still gif' data-state='animate'>"); 
-
-		    			personImageStill.attr("src", results[i].images.fixed_height_still.url);
+		    			personImage.attr({
+		    				"src": results[i].images.fixed_height.url,
+		    				"data-still": results[i].images.fixed_height_still.url,
+		    				"data-animate": results[i].images.fixed_height.url
+		    			})
 
 		    			gifDiv.append(p);
 		    			gifDiv.append(personImage);
-		    			// gifDiv.append(personImageStill);
+		    			
 		    			
 		    			$("#gifs-appear-here").prepend(gifDiv);
 
-		    // 			$(document).on("click", ".gif", function(){
-						// 	console.log("click gif");
-						// 	var state = $(this).attr("data-state");
-
-						// 	if (state ==="animate") {
-						// 		$(this).attr("src", personImageStill);
-						// 		$(this).attr("data-state", "still");
-
-						// 	}else {
-								
-						// 		$(this).attr("src", personImage); 
-						// 		$(this).attr("data-state", "animate");
-						// 	}
-						
-						// })	
 		    		}
 		    	}
 		    })
@@ -95,37 +78,17 @@ function displayTopicInfo() {
 		var state = $(this).attr("data-state");
 
 		if (state ==="animate") {
-			$(this).attr("src", personImageStill);
+			// console.log('person: ', personImageStill);
+			$(this).attr("src", $(this).attr("data-still"));
 			$(this).attr("data-state", "still");
 		}else {
 			
-			$(this).attr("src", personImage); 
+			$(this).attr("src", $(this).attr("data-animate")); 
 			$(this).attr("data-state", "animate");
 		}
 	
 	});	
-		//attempt 3 
-		// var state = $(this).class("animate"); 
-
-		// if (state === "animate") {
-		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url")); 
-		// }else {
-		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height.url"));
-		// }
-
-		//attempt 2
-		// if (personImage === true) {
-		// 	gifDiv.append(personImageStill);
-		// }
-
-		//attempt 1 edited
-		// var state = $(this).attr("src"); 
-
-		// if (state === "results[i].images.fixed_height.url") {
-		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height_still.url")); 
-		// }else {
-		// 	$(this).attr("src", $(this).attr("results[i].images.fixed_height.url"));
-		// }
+		
 	
 
 
