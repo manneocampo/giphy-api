@@ -1,3 +1,39 @@
 /** {
 	outline: 1px solid blue;
 }*/
+h1 {
+	text-align: center;
+	font-family: 'Rye', serif;
+    font-size: 45px;
+	color: black;
+}
+
+.text {
+	text-align: center;
+	font-family: 'Roboto', serif;
+	font-size: 18px;
+	color: black;
+}
+
+.btns {
+	text-align: center;
+	font-family: 'Roboto', serif;
+	font-size: 18px;
+	color:black;
+}
+
+
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+.gifText {
+	text-align: center;
+	font-family: 'Roboto', serif;
+	font-size: 18px;
+	color: #fff;
+	font-weight: bold;
+	outline-style: 1px solid black;
+}

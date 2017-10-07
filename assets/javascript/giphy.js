@@ -25,7 +25,7 @@ function displayTopicInfo() {
 
 		    			var rating = results[i].rating;
 
-		    			var p =$("<p>").text("Rating:" + rating); 
+		    			var p =$("<p class='gifText'>").text("Rating:" + rating); 
 
 		    			personImage = $("<img class='animate gif' data-state='animate'>"); 
 
